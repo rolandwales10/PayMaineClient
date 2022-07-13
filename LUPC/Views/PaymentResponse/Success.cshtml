@@ -1,0 +1,109 @@
+﻿@model LUPC.ViewModels.Vm_Receipt
+
+<style>
+    body {
+        font-weight: bold;
+    }
+</style>
+
+<lupc-header :context-path="'@Url.Action("","")'"></lupc-header>
+
+@{
+    ViewBag.Title = "Success";
+}
+
+<div id="print-content">
+    <div class="form-group row">
+        <div class="col-md-12">
+            <h2>State of Maine LUPC Application Receipt</h2>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            @Html.DisplayFor(Model => Model.deptName)
+        </div>
+    </div>
+    <br />
+
+    @if (ViewBag.message == "")
+    {
+
+        <div class="form-group row">
+            <label class="control-label col-md-2">Transaction Date:</label>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.TransactionDate)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Tracking Number:</label>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.TrackingNbr)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Customer:</label>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">Comments:</label>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.comments)
+            </div>
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <tr style="background-color:cyan">
+                <th width="20%">Application Fee</th>
+                <th width="20%">Application Transaction Fee</th>
+                <th width="20%">Total</th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.fee)
+                <td>
+                    @Html.DisplayFor(model => model.total)
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div class="form-group row">
+            <div class="col-md-12">
+                @Html.DisplayFor(model => model.ContactInfo)
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label class="control-label col-md-2">Email:</label>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.LUPCEmail)
+            </div>
+        </div>
+    }
+    else
+    {
+        <br />
+        @ViewBag.message
+    }
+</div>
+<br />
+<div>
+    <input type="button" class="btn btn-secondary" onclick="printDiv('print-content')" value="Print" />
+</div>
+
+@section scripts {
+    <script>
+        const app = Vue.createApp({
+        })
+    </script>
+    @Scripts.Render("~/Scripts/CustomUtility/Print.js")
+    @Scripts.Render("~/Scripts/Components/Header.js")
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+}

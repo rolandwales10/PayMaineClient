@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Enter payment information";
+}
+
+@Html.AntiForgeryToken()
+
+<lupc-header :context-path="'@Url.Action("","")'"></lupc-header>
+<Edit :context-path="'@Url.Action("","")'" :pay-maine-request="payMaineRequest" :messages="messages"></Edit>
+
+@section scripts {
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return @Html.Raw(@ViewBag.json);
+            }
+        })
+    </script>
+    @Scripts.Render("~/Scripts/Components/Header.js")
+    @Scripts.Render("~/Scripts/Components/PaymentInfo/Edit.js")
+    @Scripts.Render("~/Scripts/Components/Alert.js")
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+}

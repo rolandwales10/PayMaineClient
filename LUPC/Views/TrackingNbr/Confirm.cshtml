@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Confirm Tracking Number Info";
+}
+
+<lupc-header :context-path="'@Url.Action("","")'"></lupc-header>
+<Confirm :context-path="'@Url.Action("","")'" :pay-maine-request="payMaineRequest" :messages="messages"></Confirm>
+
+@section scripts {
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return @Html.Raw(@ViewBag.json);
+            }
+        })
+    </script>
+    @Scripts.Render("~/Scripts/Components/Header.js")
+    @Scripts.Render("~/Scripts/Components/TrackingNbr/Confirm.js?rev=1")
+    @Scripts.Render("~/Scripts/Components/Alert.js")
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+}

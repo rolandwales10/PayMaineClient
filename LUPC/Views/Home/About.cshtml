@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<lupc-header :context-path="'@Url.Action("","")'"></lupc-header>
+
+<h2>@ViewBag.Title.</h2>
+<br />
+<span>
+    A payment portal for applicants to the Maine Land Use Planning Commission to submit fees online for permit 
+    applications and miscellaneous maps and reports. The Land Use Planning Commission serves as the planning 
+    and zoning authority for the unorganized and deorganized areas of the State, including townships and plantations. 
+    These areas either have no local government or have chosen not to administer land use controls at the local level.
+</span>
+<br />
+<br />
+<p>Version 1.0</p>
+<p>Contact: 207-287-2631</p>
+
+@section scripts {
+    <script>
+        const app = Vue.createApp({})
+    </script>
+    @Scripts.Render("~/Scripts/Components/Header.js")
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+}

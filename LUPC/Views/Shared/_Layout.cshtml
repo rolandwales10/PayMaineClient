@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - LUPC</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/vue.global.js")
+
+</head>
+<body>
+
+    <div class="container-lg" id="app">
+        <a class="visually-hidden-focusable p-absolute" href="#main">Skip to main content</a>
+        @RenderBody()
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdVoW4aAAAAAAKUBs15AZsy2PSfgDReCtsqO1X5"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

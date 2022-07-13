@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LUPCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="Action_ID" />
+          </Key>
+          <Property Name="Action_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action_By" Type="nvarchar" MaxLength="50" />
+          <Property Name="Staff_ID" Type="int" />
+          <Property Name="Region_ID" Type="int" />
+          <Property Name="Date_Received" Type="datetime" />
+          <Property Name="LU_Form_ID" Type="int" />
+          <Property Name="LU_Action_Category_ID" Type="int" />
+          <Property Name="LU_Action_Number_Type_ID" Type="int" />
+          <Property Name="Action_Number_Sequence" Type="nvarchar" MaxLength="10" />
+          <Property Name="Permit_Amendment" Type="nvarchar" MaxLength="2" />
+          <Property Name="Permit_Year" Type="nvarchar" MaxLength="4" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cross_Reference_Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Action_Fee" Type="money" />
+          <Property Name="Permitted_New_Dwelling" Type="nvarchar" MaxLength="3" />
+          <Property Name="Dwelling_Count" Type="int" />
+          <Property Name="Subdivision_Lot_Count" Type="int" />
+          <Property Name="Sealed" Type="nvarchar" MaxLength="3" />
+          <Property Name="Deleted" Type="nvarchar" MaxLength="3" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Action_Name">
+          <Key>
+            <PropertyRef Name="Action_Name_ID" />
+          </Key>
+          <Property Name="Action_Name_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action_ID" Type="int" Nullable="false" />
+          <Property Name="LU_Name_Type_ID" Type="int" />
+          <Property Name="Person_ID" Type="int" Nullable="false" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Action_Town">
+          <Key>
+            <PropertyRef Name="Action_Town_ID" />
+          </Key>
+          <Property Name="Action_Town_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action_ID" Type="int" Nullable="false" />
+          <Property Name="Town_ID" Type="int" Nullable="false" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Check_Record">
+          <Key>
+            <PropertyRef Name="Check_Record_ID" />
+          </Key>
+          <Property Name="Check_Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Deposit" Type="datetime" />
+          <Property Name="Date_Received" Type="datetime" />
+          <Property Name="Check_Number" Type="nchar" MaxLength="10" />
+          <Property Name="Check_Date" Type="datetime" />
+          <Property Name="Check_Name" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Action_ID" Type="int" />
+          <Property Name="LU_Fee_ID" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Staff_ID" Type="int" />
+          <Property Name="Sent_To_Augusta" Type="datetime" />
+          <Property Name="Payment_Type" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="Application_Transaction_Fee" Type="money" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Zip_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="COC">
+          <Key>
+            <PropertyRef Name="COC_ID" />
+          </Key>
+          <Property Name="COC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Action_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Staff_ID" Type="int" />
+          <Property Name="Fee" Type="money" />
+          <Property Name="Pending" Type="nvarchar" MaxLength="3" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="LU_Action_Number_Type">
+          <Key>
+            <PropertyRef Name="LU_Action_Number_Type_ID" />
+          </Key>
+          <Property Name="LU_Action_Number_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="8" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="LU_Action_Category_ID" Type="int" />
+          <Property Name="YearIncluded" Type="nvarchar" MaxLength="3" />
+          <Property Name="COC_Type" Type="nvarchar" MaxLength="3" />
+          <Property Name="Display" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="LU_Fee">
+          <Key>
+            <PropertyRef Name="LU_Fee_ID" />
+          </Key>
+          <Property Name="LU_Fee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source_Code" Type="nvarchar" MaxLength="8" />
+          <Property Name="Description" Type="nvarchar" MaxLength="75" />
+          <Property Name="Fund" Type="nchar" MaxLength="3" />
+          <Property Name="Department" Type="nchar" MaxLength="3" />
+          <Property Name="Unit" Type="nchar" MaxLength="4" />
+          <Property Name="SubUnit" Type="nchar" MaxLength="2" />
+          <Property Name="Revenue" Type="nchar" MaxLength="4" />
+          <Property Name="LUPC_TP" Type="nchar" MaxLength="4" />
+          <Property Name="MRS_UT" Type="nchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Middle_Initial" Type="nvarchar" MaxLength="1" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Business_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Enter_Date" Type="datetime" />
+          <Property Name="Entered_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Edit_Date" Type="datetime" />
+          <Property Name="Edited_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Staff_ID" />
+          </Key>
+          <Property Name="Staff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Division" Type="nvarchar" MaxLength="30" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Middle_Initial" Type="nvarchar" MaxLength="1" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="nvarchar" MaxLength="3" />
+          <Property Name="Date_Start" Type="date" />
+          <Property Name="Date_End" Type="date" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="Town_ID" />
+          </Key>
+          <Property Name="Town_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Geocode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Township_Range" Type="nvarchar" MaxLength="255" />
+          <Property Name="Alt_Name" Type="nvarchar" MaxLength="125" />
+          <Property Name="County_ID" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Zone_Map_Reference" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_Action_LU_Action_Number_Type">
+          <End Role="LU_Action_Number_Type" Type="Self.LU_Action_Number_Type" Multiplicity="0..1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LU_Action_Number_Type">
+              <PropertyRef Name="LU_Action_Number_Type_ID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="LU_Action_Number_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Name_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="Action_Name" Type="Self.Action_Name" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Action_Name">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Name_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Action_Name" Type="Self.Action_Name" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Person_ID" />
+            </Principal>
+            <Dependent Role="Action_Name">
+              <PropertyRef Name="Person_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Town_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="Action_Town" Type="Self.Action_Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Action_Town">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Town_Town">
+          <End Role="Town" Type="Self.Town" Multiplicity="1" />
+          <End Role="Action_Town" Type="Self.Action_Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Town_ID" />
+            </Principal>
+            <Dependent Role="Action_Town">
+              <PropertyRef Name="Town_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_LU_Fee">
+          <End Role="LU_Fee" Type="Self.LU_Fee" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LU_Fee">
+              <PropertyRef Name="LU_Fee_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="LU_Fee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COC_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="COC" Type="Self.COC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="COC">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COC_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="COC" Type="Self.COC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="COC">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LUPCModelStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Action_Name" EntityType="Self.Action_Name" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Action_Town" EntityType="Self.Action_Town" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Check_Record" EntityType="Self.Check_Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COC" EntityType="Self.COC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LU_Action_Number_Type" EntityType="Self.LU_Action_Number_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LU_Fee" EntityType="Self.LU_Fee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Action_LU_Action_Number_Type" Association="Self.FK_Action_LU_Action_Number_Type">
+            <End Role="LU_Action_Number_Type" EntitySet="LU_Action_Number_Type" />
+            <End Role="Action" EntitySet="Action" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Name_Action" Association="Self.FK_Action_Name_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Action_Name" EntitySet="Action_Name" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Name_Person" Association="Self.FK_Action_Name_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Action_Name" EntitySet="Action_Name" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Staff" Association="Self.FK_Action_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Action" EntitySet="Action" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Town_Action" Association="Self.FK_Action_Town_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Action_Town" EntitySet="Action_Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Town_Town" Association="Self.FK_Action_Town_Town">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="Action_Town" EntitySet="Action_Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_Action" Association="Self.FK_Check_Record_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_LU_Fee" Association="Self.FK_Check_Record_LU_Fee">
+            <End Role="LU_Fee" EntitySet="LU_Fee" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_Staff" Association="Self.FK_Check_Record_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COC_Action" Association="Self.FK_COC_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="COC" EntitySet="COC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COC_Staff" Association="Self.FK_COC_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="COC" EntitySet="COC" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LUPCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="Action_ID" />
+          </Key>
+          <Property Name="Action_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action_By" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Staff_ID" Type="Int32" />
+          <Property Name="Region_ID" Type="Int32" />
+          <Property Name="Date_Received" Type="DateTime" Precision="3" />
+          <Property Name="LU_Form_ID" Type="Int32" />
+          <Property Name="LU_Action_Category_ID" Type="Int32" />
+          <Property Name="LU_Action_Number_Type_ID" Type="Int32" />
+          <Property Name="Action_Number_Sequence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Permit_Amendment" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Permit_Year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cross_Reference_Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Action_Fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Permitted_New_Dwelling" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Dwelling_Count" Type="Int32" />
+          <Property Name="Subdivision_Lot_Count" Type="Int32" />
+          <Property Name="Sealed" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="LU_Action_Number_Type" Relationship="Self.FK_Action_LU_Action_Number_Type" FromRole="Action" ToRole="LU_Action_Number_Type" />
+          <NavigationProperty Name="Action_Name" Relationship="Self.FK_Action_Name_Action" FromRole="Action" ToRole="Action_Name" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Action_Staff" FromRole="Action" ToRole="Staff" />
+          <NavigationProperty Name="Action_Town" Relationship="Self.FK_Action_Town_Action" FromRole="Action" ToRole="Action_Town" />
+          <NavigationProperty Name="Check_Record" Relationship="Self.FK_Check_Record_Action" FromRole="Action" ToRole="Check_Record" />
+          <NavigationProperty Name="COC" Relationship="Self.FK_COC_Action" FromRole="Action" ToRole="COC" />
+        </EntityType>
+        <EntityType Name="Action_Name">
+          <Key>
+            <PropertyRef Name="Action_Name_ID" />
+          </Key>
+          <Property Name="Action_Name_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action_ID" Type="Int32" Nullable="false" />
+          <Property Name="LU_Name_Type_ID" Type="Int32" />
+          <Property Name="Person_ID" Type="Int32" Nullable="false" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_Action_Name_Action" FromRole="Action_Name" ToRole="Action" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Action_Name_Person" FromRole="Action_Name" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Action_Town">
+          <Key>
+            <PropertyRef Name="Action_Town_ID" />
+          </Key>
+          <Property Name="Action_Town_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action_ID" Type="Int32" Nullable="false" />
+          <Property Name="Town_ID" Type="Int32" Nullable="false" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_Action_Town_Action" FromRole="Action_Town" ToRole="Action" />
+          <NavigationProperty Name="Town" Relationship="Self.FK_Action_Town_Town" FromRole="Action_Town" ToRole="Town" />
+        </EntityType>
+        <EntityType Name="Check_Record">
+          <Key>
+            <PropertyRef Name="Check_Record_ID" />
+          </Key>
+          <Property Name="Check_Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Deposit" Type="DateTime" Precision="3" />
+          <Property Name="Date_Received" Type="DateTime" Precision="3" />
+          <Property Name="Check_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Check_Date" Type="DateTime" Precision="3" />
+          <Property Name="Check_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Action_ID" Type="Int32" />
+          <Property Name="LU_Fee_ID" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Staff_ID" Type="Int32" />
+          <Property Name="Sent_To_Augusta" Type="DateTime" Precision="3" />
+          <Property Name="Payment_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Application_Transaction_Fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_Check_Record_Action" FromRole="Check_Record" ToRole="Action" />
+          <NavigationProperty Name="LU_Fee" Relationship="Self.FK_Check_Record_LU_Fee" FromRole="Check_Record" ToRole="LU_Fee" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Check_Record_Staff" FromRole="Check_Record" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="COC">
+          <Key>
+            <PropertyRef Name="COC_ID" />
+          </Key>
+          <Property Name="COC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Staff_ID" Type="Int32" />
+          <Property Name="Fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Pending" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_COC_Action" FromRole="COC" ToRole="Action" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_COC_Staff" FromRole="COC" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="LU_Action_Number_Type">
+          <Key>
+            <PropertyRef Name="LU_Action_Number_Type_ID" />
+          </Key>
+          <Property Name="LU_Action_Number_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LU_Action_Category_ID" Type="Int32" />
+          <Property Name="YearIncluded" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="COC_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Display" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_Action_LU_Action_Number_Type" FromRole="LU_Action_Number_Type" ToRole="Action" />
+        </EntityType>
+        <EntityType Name="LU_Fee">
+          <Key>
+            <PropertyRef Name="LU_Fee_ID" />
+          </Key>
+          <Property Name="LU_Fee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source_Code" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SubUnit" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Revenue" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="LUPC_TP" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MRS_UT" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Check_Record" Relationship="Self.FK_Check_Record_LU_Fee" FromRole="LU_Fee" ToRole="Check_Record" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_Initial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Business_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Enter_Date" Type="DateTime" Precision="3" />
+          <Property Name="Entered_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Edit_Date" Type="DateTime" Precision="3" />
+          <Property Name="Edited_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Action_Name" Relationship="Self.FK_Action_Name_Person" FromRole="Person" ToRole="Action_Name" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Staff_ID" />
+          </Key>
+          <Property Name="Staff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Division" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_Initial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Start" Type="DateTime" Precision="0" />
+          <Property Name="Date_End" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_Action_Staff" FromRole="Staff" ToRole="Action" />
+          <NavigationProperty Name="Check_Record" Relationship="Self.FK_Check_Record_Staff" FromRole="Staff" ToRole="Check_Record" />
+          <NavigationProperty Name="COC" Relationship="Self.FK_COC_Staff" FromRole="Staff" ToRole="COC" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="Town_ID" />
+          </Key>
+          <Property Name="Town_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Geocode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Township_Range" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Alt_Name" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+          <Property Name="County_ID" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zone_Map_Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Action_Town" Relationship="Self.FK_Action_Town_Town" FromRole="Town" ToRole="Action_Town" />
+        </EntityType>
+        <Association Name="FK_Action_LU_Action_Number_Type">
+          <End Role="LU_Action_Number_Type" Type="Self.LU_Action_Number_Type" Multiplicity="0..1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LU_Action_Number_Type">
+              <PropertyRef Name="LU_Action_Number_Type_ID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="LU_Action_Number_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Name_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="Action_Name" Type="Self.Action_Name" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Action_Name">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Town_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="Action_Town" Type="Self.Action_Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Action_Town">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COC_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="COC" Type="Self.COC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="Action_ID" />
+            </Principal>
+            <Dependent Role="COC">
+              <PropertyRef Name="Action_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Name_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Action_Name" Type="Self.Action_Name" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Person_ID" />
+            </Principal>
+            <Dependent Role="Action_Name">
+              <PropertyRef Name="Person_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Action_Town_Town">
+          <End Role="Town" Type="Self.Town" Multiplicity="1" />
+          <End Role="Action_Town" Type="Self.Action_Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Town_ID" />
+            </Principal>
+            <Dependent Role="Action_Town">
+              <PropertyRef Name="Town_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_LU_Fee">
+          <End Role="LU_Fee" Type="Self.LU_Fee" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LU_Fee">
+              <PropertyRef Name="LU_Fee_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="LU_Fee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Record_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Check_Record" Type="Self.Check_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="Check_Record">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COC_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="COC" Type="Self.COC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Staff_ID" />
+            </Principal>
+            <Dependent Role="COC">
+              <PropertyRef Name="Staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Action" EntityType="Self.Action" />
+          <EntitySet Name="Action_Name" EntityType="Self.Action_Name" />
+          <EntitySet Name="Action_Town" EntityType="Self.Action_Town" />
+          <EntitySet Name="Check_Record" EntityType="Self.Check_Record" />
+          <EntitySet Name="COC" EntityType="Self.COC" />
+          <EntitySet Name="LU_Action_Number_Type" EntityType="Self.LU_Action_Number_Type" />
+          <EntitySet Name="LU_Fee" EntityType="Self.LU_Fee" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Town" EntityType="Self.Town" />
+          <AssociationSet Name="FK_Action_LU_Action_Number_Type" Association="Self.FK_Action_LU_Action_Number_Type">
+            <End Role="LU_Action_Number_Type" EntitySet="LU_Action_Number_Type" />
+            <End Role="Action" EntitySet="Action" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Name_Action" Association="Self.FK_Action_Name_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Action_Name" EntitySet="Action_Name" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Staff" Association="Self.FK_Action_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Action" EntitySet="Action" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Town_Action" Association="Self.FK_Action_Town_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Action_Town" EntitySet="Action_Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_Action" Association="Self.FK_Check_Record_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COC_Action" Association="Self.FK_COC_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="COC" EntitySet="COC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Name_Person" Association="Self.FK_Action_Name_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Action_Name" EntitySet="Action_Name" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Action_Town_Town" Association="Self.FK_Action_Town_Town">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="Action_Town" EntitySet="Action_Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_LU_Fee" Association="Self.FK_Check_Record_LU_Fee">
+            <End Role="LU_Fee" EntitySet="LU_Fee" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Record_Staff" Association="Self.FK_Check_Record_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Check_Record" EntitySet="Check_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COC_Staff" Association="Self.FK_COC_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="COC" EntitySet="COC" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LUPCModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Action">
+            <EntityTypeMapping TypeName="LUPCModel.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="Action_ID" ColumnName="Action_ID" />
+                <ScalarProperty Name="Action_By" ColumnName="Action_By" />
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Region_ID" ColumnName="Region_ID" />
+                <ScalarProperty Name="Date_Received" ColumnName="Date_Received" />
+                <ScalarProperty Name="LU_Form_ID" ColumnName="LU_Form_ID" />
+                <ScalarProperty Name="LU_Action_Category_ID" ColumnName="LU_Action_Category_ID" />
+                <ScalarProperty Name="LU_Action_Number_Type_ID" ColumnName="LU_Action_Number_Type_ID" />
+                <ScalarProperty Name="Action_Number_Sequence" ColumnName="Action_Number_Sequence" />
+                <ScalarProperty Name="Permit_Amendment" ColumnName="Permit_Amendment" />
+                <ScalarProperty Name="Permit_Year" ColumnName="Permit_Year" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cross_Reference_Note" ColumnName="Cross_Reference_Note" />
+                <ScalarProperty Name="Action_Fee" ColumnName="Action_Fee" />
+                <ScalarProperty Name="Permitted_New_Dwelling" ColumnName="Permitted_New_Dwelling" />
+                <ScalarProperty Name="Dwelling_Count" ColumnName="Dwelling_Count" />
+                <ScalarProperty Name="Subdivision_Lot_Count" ColumnName="Subdivision_Lot_Count" />
+                <ScalarProperty Name="Sealed" ColumnName="Sealed" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Action_Name">
+            <EntityTypeMapping TypeName="LUPCModel.Action_Name">
+              <MappingFragment StoreEntitySet="Action_Name">
+                <ScalarProperty Name="Action_Name_ID" ColumnName="Action_Name_ID" />
+                <ScalarProperty Name="Action_ID" ColumnName="Action_ID" />
+                <ScalarProperty Name="LU_Name_Type_ID" ColumnName="LU_Name_Type_ID" />
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Action_Town">
+            <EntityTypeMapping TypeName="LUPCModel.Action_Town">
+              <MappingFragment StoreEntitySet="Action_Town">
+                <ScalarProperty Name="Action_Town_ID" ColumnName="Action_Town_ID" />
+                <ScalarProperty Name="Action_ID" ColumnName="Action_ID" />
+                <ScalarProperty Name="Town_ID" ColumnName="Town_ID" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Check_Record">
+            <EntityTypeMapping TypeName="LUPCModel.Check_Record">
+              <MappingFragment StoreEntitySet="Check_Record">
+                <ScalarProperty Name="Check_Record_ID" ColumnName="Check_Record_ID" />
+                <ScalarProperty Name="Date_Deposit" ColumnName="Date_Deposit" />
+                <ScalarProperty Name="Date_Received" ColumnName="Date_Received" />
+                <ScalarProperty Name="Check_Number" ColumnName="Check_Number" />
+                <ScalarProperty Name="Check_Date" ColumnName="Check_Date" />
+                <ScalarProperty Name="Check_Name" ColumnName="Check_Name" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Action_ID" ColumnName="Action_ID" />
+                <ScalarProperty Name="LU_Fee_ID" ColumnName="LU_Fee_ID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Sent_To_Augusta" ColumnName="Sent_To_Augusta" />
+                <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Application_Transaction_Fee" ColumnName="Application_Transaction_Fee" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Zip_Code" ColumnName="Zip_Code" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COC">
+            <EntityTypeMapping TypeName="LUPCModel.COC">
+              <MappingFragment StoreEntitySet="COC">
+                <ScalarProperty Name="COC_ID" ColumnName="COC_ID" />
+                <ScalarProperty Name="Action_ID" ColumnName="Action_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Pending" ColumnName="Pending" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LU_Action_Number_Type">
+            <EntityTypeMapping TypeName="LUPCModel.LU_Action_Number_Type">
+              <MappingFragment StoreEntitySet="LU_Action_Number_Type">
+                <ScalarProperty Name="LU_Action_Number_Type_ID" ColumnName="LU_Action_Number_Type_ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LU_Action_Category_ID" ColumnName="LU_Action_Category_ID" />
+                <ScalarProperty Name="YearIncluded" ColumnName="YearIncluded" />
+                <ScalarProperty Name="COC_Type" ColumnName="COC_Type" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LU_Fee">
+            <EntityTypeMapping TypeName="LUPCModel.LU_Fee">
+              <MappingFragment StoreEntitySet="LU_Fee">
+                <ScalarProperty Name="LU_Fee_ID" ColumnName="LU_Fee_ID" />
+                <ScalarProperty Name="Source_Code" ColumnName="Source_Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="LUPC_TP" ColumnName="LUPC_TP" />
+                <ScalarProperty Name="MRS_UT" ColumnName="MRS_UT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="LUPCModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Initial" ColumnName="Middle_Initial" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Business_Name" ColumnName="Business_Name" />
+                <ScalarProperty Name="Enter_Date" ColumnName="Enter_Date" />
+                <ScalarProperty Name="Entered_By" ColumnName="Entered_By" />
+                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
+                <ScalarProperty Name="Edited_By" ColumnName="Edited_By" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="LUPCModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Initial" ColumnName="Middle_Initial" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Date_Start" ColumnName="Date_Start" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Town">
+            <EntityTypeMapping TypeName="LUPCModel.Town">
+              <MappingFragment StoreEntitySet="Town">
+                <ScalarProperty Name="Town_ID" ColumnName="Town_ID" />
+                <ScalarProperty Name="Geocode" ColumnName="Geocode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Township_Range" ColumnName="Township_Range" />
+                <ScalarProperty Name="Alt_Name" ColumnName="Alt_Name" />
+                <ScalarProperty Name="County_ID" ColumnName="County_ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Zone_Map_Reference" ColumnName="Zone_Map_Reference" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

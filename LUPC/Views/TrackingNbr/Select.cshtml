@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Select Tracking Number";
+}
+
+
+<div class="text-danger text-large">
+    <span>@ViewBag.Environment</span>
+</div>
+<br />
+
+<lupc-header :context-path="'@Url.Action("","")'"></lupc-header>
+<select-trknr :context-path="'@Url.Action("","")'"></select-trknr>
+
+
+@section scripts {
+    <script>
+        const app = Vue.createApp({
+        })
+    </script>
+    @Scripts.Render("~/Scripts/Components/Header.js")
+    @Scripts.Render("~/Scripts/Components/TrackingNbr/Select.js")
+    @Scripts.Render("~/Scripts/Components/Alert.js")
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+}

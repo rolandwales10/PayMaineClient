@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "LUPC entry point";
+}
+
+@section scripts {
+    <script>
+        var url = "@Url.Action("Select", "TrackingNbr")";
+        var vueTest = ('__defineSetter__' in Object.prototype);
+        var transitionTest = ('transition' in document.documentElement.style) || ('WebkitTransition' in document.documentElement.style);
+        if (vueTest && transitionTest) {
+            window.location.replace(url)
+    }
+    else alert('Your browser does not support HTML5 features needed by this application.  You will need an up to date computer and browser.  Usable browsers include Chrome, Edge, Safari, and Firefox');
+
+    </script>
+}

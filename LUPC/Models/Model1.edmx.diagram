@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="592b5421a7ec42ebb10fc0d613c0bf1b" Name="Diagram1">
+        <EntityTypeShape EntityType="LUPCModel.Action" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Action_Name" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Action_Town" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Check_Record" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.COC" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.LU_Action_Number_Type" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.LU_Fee" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Person" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Staff" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LUPCModel.Town" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
+        <AssociationConnector Association="LUPCModel.FK_Action_LU_Action_Number_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Action_Name_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Action_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Action_Town_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Check_Record_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_COC_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Action_Name_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Action_Town_Town" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Check_Record_LU_Fee" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_Check_Record_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="LUPCModel.FK_COC_Staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
