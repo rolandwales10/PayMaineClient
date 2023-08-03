@@ -31,6 +31,10 @@ namespace LUPC.ViewModels
         public string Comments { get; set; }
 
         public List<Vm_PayMaineRequestItem> PaymentItems { get; set; }
+
+        /*
+         * TrackingInfo should not be part of the request to PayMaine.  Please don't follow this bad example and don't include it!
+         */
         public Vm_TrackingNbrInfo TrackingInfo { get; set; }
     }
 

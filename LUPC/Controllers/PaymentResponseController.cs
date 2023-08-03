@@ -36,7 +36,11 @@ namespace LUPC.Controllers
                 if (rctc.messages.Count == 0)
                 {
                     var diff = DateTime.Now - rct.TransactionDate;
-                    if (diff.TotalMinutes > 15)
+					/*
+                     * The 15 minute timeout is based on a security review.  This makes it less likely for a hacker or a bot to "fish" for information about
+                     * other people's receipts
+                     */
+					if (diff.TotalMinutes > 15)
                         message = "Time expired for reviewing receipt";
                     else
                     {
